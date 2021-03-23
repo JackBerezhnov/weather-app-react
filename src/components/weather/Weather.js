@@ -8,17 +8,28 @@ function Weather() {
 
     const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
     const cityName = "San Diego";
+    let dataWeather = {};
+    
     useEffect(() => {
-        axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`)
-            .then(res => {
-                console.log(res);
-                const cityWeather = res.data;
-                setWeather({cityWeather});
-            })
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`)
+            .then(response => response.json())
+
+            .then(data =>  {
+                console.log(data)
+                return dataWeather = data;
+                //const cityWeather = data;
+                //setWeather({cityWeather});
+            });
     });
+
+    function setDataWeather() {
+        setWeather(dataWeather);
+        console.log("It is our data", weather);
+    }
 
     return (
         <div>
+            {setDataWeather}
             <h1>Weather App</h1>
             <Input/> 
         </div>
