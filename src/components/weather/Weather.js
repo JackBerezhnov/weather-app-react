@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Input from '../input/Input';
 
 function Weather() {
     const [person, setPerson] = useState(['']); 
@@ -19,6 +20,7 @@ function Weather() {
     return (
         <div>
             <h1>Weather App</h1>
+            <Input/> 
         </div>
     );
 }
