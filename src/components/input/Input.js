@@ -1,9 +1,11 @@
 const Input = (props) => {
     return (
         <div>
+            {console.log(props)}
             <input 
-                type="text" 
-                value="Put something"
+                type="text"
+                name="username"
+                onChange={e => props.onChange(e)}
             />
         </div>
     );

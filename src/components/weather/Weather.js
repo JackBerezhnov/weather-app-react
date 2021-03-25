@@ -5,6 +5,7 @@ function Weather() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false); 
     const [weather, setWeather] = useState([]);
+    const [userInput, setUserInput] = useState("");
 
     const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
     const cityName = "San Diego";
@@ -24,17 +25,22 @@ function Weather() {
         );
     }, [])
 
+    function handleChange(e) {
+        console.log("It happens", e.target.value); 
+    }
+
     if(error) {
         return <div>Error: {error.message}</div>;
     } else if(!isLoaded) {
         return <div>Loading...</div>;
     } else {
+
         return (
             <div>
                 <h1>Weather App</h1>
                 
                 {console.log("Weather", weather)}
-                <Input/> 
+                <Input onChange={handleChange}/> 
             </div>
         ); 
     }
