@@ -30,6 +30,10 @@ function Weather() {
         setUserInput(e.target.value);
     }
 
+    function getUserData() {
+        console.log("Final Data", userInput);
+    }
+
     if(error) {
         return <div>Error: {error.message}</div>;
     } else if(!isLoaded) {
@@ -41,7 +45,8 @@ function Weather() {
                 <h1>Weather App</h1>
                 
                 {console.log("Weather", weather)}
-                <Input onChange={handleChange}/> 
+                <Input onChange={handleChange}/>
+                <button value="Send" onClick={getUserData}>Send</button> 
                 <p>{userInput}</p>
             </div>
         ); 
