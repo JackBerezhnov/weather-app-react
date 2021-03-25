@@ -26,7 +26,8 @@ function Weather() {
     }, [])
 
     function handleChange(e) {
-        console.log("It happens", e.target.value); 
+        console.log("It happens", e.target.value);
+        setUserInput(e.target.value);
     }
 
     if(error) {
@@ -41,6 +42,7 @@ function Weather() {
                 
                 {console.log("Weather", weather)}
                 <Input onChange={handleChange}/> 
+                <p>{userInput}</p>
             </div>
         ); 
     }
