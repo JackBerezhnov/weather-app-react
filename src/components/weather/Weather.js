@@ -3,37 +3,42 @@ import { useEffect, useState } from 'react';
 import Input from '../input/Input';
 
 function Weather() {
-    const [person, setPerson] = useState(['']); 
-    const [weather, setWeather] = useState([0]);
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false); 
+    const [weather, setWeather] = useState([]);
 
     const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
     const cityName = "San Diego";
-    let dataWeather = {};
     
     useEffect(() => {
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`)
             .then(response => response.json())
+            .then((data) =>  {
+                console.log(data);
+                setIsLoaded(true); 
+                setWeather(data);
+            },
+            (error) => {
+                setIsLoaded(true);
+                setError(error);
+            }
+        );
+    }, [])
 
-            .then(data =>  {
-                console.log(data)
-                return dataWeather = data;
-                //const cityWeather = data;
-                //setWeather({cityWeather});
-            });
-    });
-
-    function setDataWeather() {
-        setWeather(dataWeather);
-        console.log("It is our data", weather);
+    if(error) {
+        return <div>Error: {error.message}</div>;
+    } else if(!isLoaded) {
+        return <div>Loading...</div>;
+    } else {
+        return (
+            <div>
+                <h1>Weather App</h1>
+                
+                {console.log("Weather", weather)}
+                <Input/> 
+            </div>
+        ); 
     }
-
-    return (
-        <div>
-            {setDataWeather}
-            <h1>Weather App</h1>
-            <Input/> 
-        </div>
-    );
 }
 
 export default Weather;
