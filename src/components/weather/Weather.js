@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Input from '../input/Input';
 
@@ -15,7 +14,7 @@ function Weather() {
             .then(response => response.json())
             .then((data) =>  {
                 console.log(data);
-                setIsLoaded(true); 
+                setIsLoaded(true);
                 setWeather(data);
             },
             (error) => {
