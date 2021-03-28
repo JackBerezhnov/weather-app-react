@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Input from '../input/Input';
+import Display from '../display/Display';
 
 function Weather() { 
     const [weather, setWeather] = useState([]);
@@ -31,6 +32,7 @@ function Weather() {
             {console.log("Weather", weather)}
             <Input onChange={handleChange}/>
             <button value="Send" onClick={submitUserData}>Send</button>
+            <Display data={weather}/>
         </div>
     ); 
 }
