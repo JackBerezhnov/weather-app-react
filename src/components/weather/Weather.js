@@ -7,15 +7,14 @@ function Weather() {
     const [city, setCity] = useState("");
 
     const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
-
-    function getWeatherData(city) {
+    useEffect(() => { 
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`)
             .then(response => response.json())
             .then((data) =>  {
                 setWeather(data);
             }
         );
-    }
+    }, [city]);
 
     function handleChange(e) {
         console.log("It happens", e.target.value);
@@ -24,20 +23,16 @@ function Weather() {
 
     async function submitUserData() {
         setCity(userInput);
-        getWeatherData(city);
     }
 
-
-
-        return (
-            <div>
-                <h1>Weather App</h1>
-                {console.log("Weather", weather)}
-                <Input onChange={handleChange}/>
-                <button value="Send" onClick={submitUserData}>Send</button> 
-                
-            </div>
-        ); 
+    return (
+        <div>
+            <h1>Weather App</h1>
+            {console.log("Weather", weather)}
+            <Input onChange={handleChange}/>
+            <button value="Send" onClick={submitUserData}>Send</button>
+        </div>
+    ); 
 }
 
 export default Weather;
