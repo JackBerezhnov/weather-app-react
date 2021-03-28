@@ -21,7 +21,7 @@ function Weather() {
         setUserInput(e.target.value);
     }
 
-    async function submitUserData() {
+    function submitUserData() {
         setCity(userInput);
     }
 
