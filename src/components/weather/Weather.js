@@ -6,12 +6,12 @@ function Weather() {
     const [isLoaded, setIsLoaded] = useState(false); 
     const [weather, setWeather] = useState([]);
     const [userInput, setUserInput] = useState("");
+    const [city, setCity] = useState("");
 
     const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
-    const cityName = "San Diego";
-    
+
     useEffect(() => {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`)
             .then(response => response.json())
             .then((data) =>  {
                 console.log(data);
@@ -23,15 +23,16 @@ function Weather() {
                 setError(error);
             }
         );
-    }, [])
+    }, []);
 
     function handleChange(e) {
         console.log("It happens", e.target.value);
         setUserInput(e.target.value);
     }
 
-    function getUserData() {
-        console.log("Final Data", userInput);
+    function submitUserData() {
+        setCity(userInput);
+        console.log("City Name", city);
     }
 
     if(error) {
@@ -43,10 +44,9 @@ function Weather() {
         return (
             <div>
                 <h1>Weather App</h1>
-                
                 {console.log("Weather", weather)}
                 <Input onChange={handleChange}/>
-                <button value="Send" onClick={getUserData}>Send</button> 
+                <button value="Send" onClick={submitUserData}>Send</button> 
                 <p>{userInput}</p>
             </div>
         ); 
