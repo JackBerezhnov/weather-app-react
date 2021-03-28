@@ -22,9 +22,8 @@ function Weather() {
         setUserInput(e.target.value);
     }
 
-    function submitUserData() {
+    async function submitUserData() {
         setCity(userInput);
-        console.log("City Name", city);
         getWeatherData(city);
     }
 
@@ -36,7 +35,7 @@ function Weather() {
                 {console.log("Weather", weather)}
                 <Input onChange={handleChange}/>
                 <button value="Send" onClick={submitUserData}>Send</button> 
-                <p>{userInput}</p>
+                
             </div>
         ); 
 }
