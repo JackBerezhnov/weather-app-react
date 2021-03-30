@@ -6,6 +6,7 @@ function Weather() {
     const [weather, setWeather] = useState([]);
     const [userInput, setUserInput] = useState("");
     const [city, setCity] = useState("");
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
     useEffect(() => { 
@@ -24,6 +25,7 @@ function Weather() {
 
     function submitUserData() {
         setCity(userInput);
+        setIsSubmitted(true);
     }
 
     return (
@@ -32,7 +34,7 @@ function Weather() {
             {console.log("Weather", weather)}
             <Input onChange={handleChange}/>
             <button value="Send" onClick={submitUserData}>Send</button>
-            <Display data={weather}/>
+            <Display data={weather} submited={isSubmitted}/>
         </div>
     ); 
 }
