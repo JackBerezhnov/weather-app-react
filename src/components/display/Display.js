@@ -1,3 +1,5 @@
+import Tempature from "../tempature/Tempature";
+
 const Display = (props) => {
 
     if(!props.submited) {
@@ -12,6 +14,7 @@ const Display = (props) => {
                 <h2>{props.data.name}</h2>
                 <p>{props.data.id}</p>
                 <p>{props.data.sys.country}</p>
+                <Tempature temp={props.data.main.temp}/>
             </div>
         );
     }

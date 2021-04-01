@@ -35,6 +35,7 @@ function Weather() {
     return (
         <div className="weather-container">
             <h1>Weather App</h1>
+            {console.log("Weather", weather)}
             <Input onChange={handleChange}/>
             <button value="Send" onClick={submitUserData}>Send</button>
             <Display data={weather} submited={isSubmitted}/>
