@@ -24,7 +24,6 @@ function Weather() {
     }, [city]);
 
     function handleChange(e) {
-        console.log("It happens", e.target.value);
         setUserInput(e.target.value);
     }
 
@@ -35,8 +34,6 @@ function Weather() {
     return (
         <div>
             <h1>Weather App</h1>
-            {console.log("Weather", weather)}
-            {console.log("Submited", isSubmitted)}
             <Input onChange={handleChange}/>
             <button value="Send" onClick={submitUserData}>Send</button>
             <Display data={weather} submited={isSubmitted}/>
