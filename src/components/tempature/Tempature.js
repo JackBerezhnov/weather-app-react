@@ -5,7 +5,7 @@ const Tempature = (props) => {
         return tempatureFahrenheit;
     }
 
-    return <p>Tempature: {fromKelvinToFahrenheit(props)}</p>
+    return <p>Tempature: {fromKelvinToFahrenheit(props)}F</p>
 }
 
 export default Tempature;
