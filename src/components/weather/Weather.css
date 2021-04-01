@@ -2,8 +2,19 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     height: 50vh;
     width: 100%;
 }
+
+.btn {
+    border: none;
+    color: white;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+
+.success {background-color: #4CAF50;}
+.success:hover {background-color: #46a049;}
