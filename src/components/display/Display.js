@@ -1,6 +1,6 @@
 import Tempature from "../tempature/Tempature";
 import WeatherDescription from "../weather-description/WeatherDescription";
-import Weather from "../weather/Weather";
+import './Display.css';
 
 const Display = (props) => {
 
@@ -12,8 +12,8 @@ const Display = (props) => {
         )
     } else {
         return (
-            <div>
-                <h2>{props.data.name}</h2>
+            <div className="weather-description">
+                <h2 className="cityName">{props.data.name}</h2>
                 <p>Country: {props.data.sys.country}</p>
                 <Tempature temp={props.data.main.temp} />
                 <WeatherDescription weather={props.data.weather} />
