@@ -1,4 +1,6 @@
 import Tempature from "../tempature/Tempature";
+import WeatherDescription from "../weather-description/WeatherDescription";
+import Weather from "../weather/Weather";
 
 const Display = (props) => {
 
@@ -12,9 +14,9 @@ const Display = (props) => {
         return (
             <div>
                 <h2>{props.data.name}</h2>
-                <p>{props.data.id}</p>
-                <p>{props.data.sys.country}</p>
-                <Tempature temp={props.data.main.temp}/>
+                <p>Country: {props.data.sys.country}</p>
+                <Tempature temp={props.data.main.temp} />
+                <WeatherDescription weather={props.data.weather} />
             </div>
         );
     }
