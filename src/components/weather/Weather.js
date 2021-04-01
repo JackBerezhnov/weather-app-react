@@ -9,13 +9,18 @@ function Weather() {
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
-    useEffect(() => { 
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`)
-            .then(response => response.json())
-            .then((data) =>  {
-                setWeather(data);
+    useEffect(() => {
+        async function fetchMyAPI() { 
+            let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`)
+            response = await response.json()
+            setWeather(response)
+
+            if(response.cod === 200) {
+                setIsSubmitted(true);
             }
-        );
+        }
+
+        fetchMyAPI();
     }, [city]);
 
     function handleChange(e) {
@@ -25,18 +30,18 @@ function Weather() {
 
     function submitUserData() {
         setCity(userInput);
-        setIsSubmitted(true);
     }
-
+    
     return (
         <div>
             <h1>Weather App</h1>
             {console.log("Weather", weather)}
+            {console.log("Submited", isSubmitted)}
             <Input onChange={handleChange}/>
             <button value="Send" onClick={submitUserData}>Send</button>
             <Display data={weather} submited={isSubmitted}/>
         </div>
-    ); 
+    );
 }
 
 export default Weather;
